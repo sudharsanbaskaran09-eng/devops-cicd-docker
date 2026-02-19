@@ -1,25 +1,74 @@
-# CI/CD Pipeline using GitHub Actions and Docker
+# CI/CD Pipeline with GitHub Actions and Docker
 
-This project demonstrates a Continuous Integration (CI) pipeline implemented using GitHub Actions and Docker. The objective of this project is to automate the process of building a Docker image whenever code is pushed to the GitHub repository, following real-world DevOps practices.
+## Overview
+This project implements a Continuous Integration (CI) pipeline using GitHub Actions and Docker. The pipeline automatically builds a Docker image whenever code is pushed to the main branch of the GitHub repository. The goal of this project is to demonstrate practical DevOps automation used in real-world software delivery workflows.
 
-The application is a simple Python Flask web service that is containerized using Docker. GitHub Actions is configured to automatically trigger a workflow on every push to the main branch, where the source code is checked out and a Docker image is built. This ensures consistent builds, early detection of issues, and reduced manual effort.
+The application is containerized using Docker, ensuring consistent builds and environment parity. GitHub Actions is used as the CI tool to automate the build process and validate integration on every code change.
 
-Technologies used in this project include Python (Flask) for the application, Docker for containerization, GitHub Actions for CI automation, Git for version control, and GitHub for source code hosting.
+---
 
-Project structure:
+## Objectives
+- Implement an automated CI pipeline
+- Containerize an application using Docker
+- Trigger automated builds on every Git push
+- Follow real-world DevOps CI best practices
+- Gain hands-on experience with GitHub Actions workflows
+
+---
+
+## Technologies Used
+- Python (Flask) – Sample web application
+- Docker – Containerization
+- GitHub Actions – Continuous Integration
+- Git – Version control
+- GitHub – Source code management
+
+---
+
+## Architecture
+Developer Commit
+|
+v
+GitHub Repository
+|
+v
+GitHub Actions CI Workflow
+|
+v
+Docker Image Build
+
+---
+
+## Project Structure
 devops-cicd-docker/
-app.py
-requirements.txt
-Dockerfile
-README.md
+├── app.py
+├── requirements.txt
+├── Dockerfile
+├── README.md
+└── .github/
+└── workflows/
+└── ci.yml
+
+---
+
+## CI Pipeline Workflow
+1. Developer pushes code to the `main` branch
+2. GitHub Actions workflow is triggered automatically
+3. The workflow checks out the source code
+4. Docker image is built using the Dockerfile
+5. Build status is reported in the GitHub Actions dashboard
+
+---
+
+## Running the Application Locally
+
+### Build the Docker Image
+```bash
+docker build -t devops-cicd-app .
+docker run -p 5000:5000 devops-cicd-app
+http://localhost:5000
 .github/workflows/ci.yml
 
-CI pipeline working flow: A developer pushes code to the main branch of the GitHub repository. This triggers the GitHub Actions workflow defined in the ci.yml file. The workflow checks out the repository and builds a Docker image using the Dockerfile. The build status is displayed in the GitHub Actions dashboard, indicating success or failure.
 
-To run the application locally, first build the Docker image using the command: docker build -t devops-cicd-app . Then run the container using: docker run -p 5000:5000 devops-cicd-app. Once the container is running, the application can be accessed in a browser at http://localhost:5000.
 
-The CI pipeline configuration is located in the .github/workflows/ci.yml file and is automatically executed on every push to the main branch.
 
-Through this project, key learnings include writing Dockerfiles, building and running Docker containers, setting up CI pipelines using GitHub Actions, understanding automated build workflows, and gaining hands-on experience with real-world DevOps CI practices.
-
-Resume point: Implemented a CI pipeline using GitHub Actions and Docker to automatically build Docker images on every code push.
